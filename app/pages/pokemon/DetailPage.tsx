@@ -16,39 +16,36 @@ function DetailPageContent() {
     }
   }, [pokemonName]);
 
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
   if (!selectedPokemon) return <p>Chargement...</p>;
 
   return (
-    <div className="p-6">
-      <NavLink to="/pokemon" className="text-red hover:underline">
-        ← Retour à la liste
-      </NavLink>
+    <div className="detail-container">
+      <div className="detail-card">
+        <NavLink to="/pokemon" className="detail-back">← Retour à la liste</NavLink>
+        <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} />
+        <h1 className="detail-name">{selectedPokemon.name}</h1>
 
-      <h1 className="text-3xl font-bold mt-4 capitalize">{selectedPokemon.name}</h1>
+        <div className="detail-section">
+        <h2>Types</h2>
+        <div className="pokemon-types">
+            {selectedPokemon.types.map((t) => (
+            <span key={t.slot} className="pokemon-type">
+            {t.type.name}
+            </span>
+            ))}
+        </div>
+    </div>
 
-      <img
-        src={selectedPokemon.sprites.front_default}
-        alt={selectedPokemon.name}
-        className="w-32 h-32 mt-4"
-      />
+<div className="detail-section">
+  <h2>Capacités</h2>
+  <ul className="pokemon-abilities">
+    {selectedPokemon.abilities.map((a) => (
+      <li key={a.ability.name}>{a.ability.name}</li>
+    ))}
+  </ul>
+</div>
 
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold">Types</h2>
-        <ul className="list-disc ml-6">
-          {selectedPokemon.types.map((t) => (
-            <li key={t.slot}>{t.type.name}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold">Capacités</h2>
-        <ul className="list-disc ml-6">
-          {selectedPokemon.abilities.map((a) => (
-            <li key={a.ability.name}>{a.ability.name}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );
