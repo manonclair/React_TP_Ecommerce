@@ -1,4 +1,3 @@
-// app/routes/pokemon/pokemon-detail.tsx
 import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { PokemonProvider } from "../../contexts/pokemon/PokemonProvider";

@@ -1,5 +1,3 @@
-// app/contexts/pokemon/PokemonProvider.tsx
-
 import {
   useState,
   useCallback,

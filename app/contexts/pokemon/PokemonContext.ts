@@ -1,5 +1,3 @@
-// app/contexts/pokemon/PokemonContext.ts
-
 import { createContext } from "react";
 
 export type Pokemon = {

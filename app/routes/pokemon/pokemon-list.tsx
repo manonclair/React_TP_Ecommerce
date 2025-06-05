@@ -4,7 +4,6 @@ import { PokemonContext } from "../../contexts/pokemon/PokemonContext";
 import { NavLink } from "react-router-dom";
 import "../../app.css";
 
-// 🔎 Récupère l'ID du Pokémon à partir de son URL
 const getPokemonIdFromUrl = (url: string): string => {
   const parts = url.split("/").filter(Boolean);
   return parts[parts.length - 1];
