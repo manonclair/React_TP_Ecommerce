@@ -1,4 +1,4 @@
-// app/contexts/product/ProductContext.ts
+
 import { createContext } from "react";
 
 export type Product = {
@@ -23,12 +23,12 @@ type ProductContextType = {
   fetchProducts: () => Promise<void>;
   fetchProductDetails: (id: number) => Promise<void>;
 
-  paginatedProducts: Product[]; // 👈 à afficher dans ListPage
+  paginatedProducts: Product[];
   currentPage: number;
   setCurrentPage: (page: number) => void;
   totalPages: number;
 
-  setProducts: (products: Product[]) => void; // ✅ AJOUT ICI
+  setProducts: (products: Product[]) => void; 
 };
 
 export const ProductContext = createContext<ProductContextType>({

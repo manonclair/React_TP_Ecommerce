@@ -10,7 +10,6 @@ import { AuthContext, type User } from "./AuthContext";
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
-  // 🔄 Restaure le user depuis sessionStorage au montage
   useEffect(() => {
     const storedUser = sessionStorage.getItem("user");
     if (storedUser) {
@@ -18,7 +17,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // 🔐 Connexion via API FakeStore
   const login = useCallback(async (username: string, password: string) => {
     try {
       const res = await fetch("https://fakestoreapi.com/auth/login", {
@@ -30,6 +28,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const data = await res.json();
       if (!data.token) return false;
 
+
+
       const usersRes = await fetch("https://fakestoreapi.com/users");
       const users = await usersRes.json();
 
@@ -39,7 +39,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const fullUser: User = {
         ...foundUser,
         token: data.token,
-        role: "user", // ✅ utilisateur standard
+        role: "user",
       };
 
       setUser(fullUser);
@@ -51,7 +51,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // 🛡 Connexion Admin locale
   const loginAsAdmin = useCallback((username: string, password: string): boolean => {
     if (username === "admin" && password === "admin123") {
       const adminUser: User = {

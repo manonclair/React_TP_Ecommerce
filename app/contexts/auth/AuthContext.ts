@@ -12,11 +12,10 @@ export type User = {
   role: "user" | "admin"; 
 };
 
-
 type AuthContextType = {
   user: User | null;
   login: (username: string, password: string) => Promise<boolean>;
-  loginAsAdmin: (username: string, password: string) => boolean; // 👈 ajoute ça
+  loginAsAdmin: (username: string, password: string) => boolean; 
   logout: () => void;
 };
 
@@ -24,6 +23,6 @@ type AuthContextType = {
 export const AuthContext = createContext<AuthContextType>({
   user: null,
   login: async () => false,
-  loginAsAdmin: () => false, // 👈 à ajouter
+  loginAsAdmin: () => false,
   logout: () => {},
 });

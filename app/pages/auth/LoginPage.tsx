@@ -7,7 +7,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("johnd");
-  const [password, setPassword] = useState("m38rmF$"); // valeurs testables avec l'API
+  const [password, setPassword] = useState("m38rmF$"); 
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {

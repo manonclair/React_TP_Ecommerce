@@ -1,4 +1,4 @@
-// app/components/EditProductModal.tsx
+
 import { useState, useEffect } from "react";
 import type { Product } from "../contexts/product/ProductContext";
 
@@ -12,7 +12,7 @@ export default function EditProductModal({ product, onSave, onClose }: Props) {
   const [edited, setEdited] = useState<Product>(product);
 
   useEffect(() => {
-    setEdited(product); // reset when product changes
+    setEdited(product); 
   }, [product]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

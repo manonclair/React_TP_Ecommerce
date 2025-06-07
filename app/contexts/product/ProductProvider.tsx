@@ -8,10 +8,10 @@ import {
 import { ProductContext } from "./ProductContext";
 import type { Product, ProductDetails } from "./ProductContext";
 
-console.log("✅ ProductProvider : le fichier est chargé");
+
 
 export function ProductProvider({ children }: { children: ReactNode }) {
-  console.log("🟢 ProductProvider : composant monté");
+
 
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<ProductDetails | null>(null);
@@ -80,7 +80,6 @@ const contextValue = useMemo(
     setProducts, 
   ]
 );
-
 
   return (
     <ProductContext.Provider value={contextValue}>

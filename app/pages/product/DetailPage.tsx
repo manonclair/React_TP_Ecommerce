@@ -4,7 +4,7 @@ import { ProductContext } from "../../contexts/product/ProductContext";
 import { CartContext } from "../../contexts/cart/CartContext";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 
-// 🔧 Modal d'édition simulée
+
 function EditProductModal({
   product,
   onSave,
@@ -26,8 +26,8 @@ function EditProductModal({
       price,
       description,
     };
-    onSave(updated); // callback pour simuler la sauvegarde
-    alert("✅ Produit mis à jour (simulation)");
+    onSave(updated); 
+    alert(" Produit mis à jour");
     onClose();
   };
 
@@ -82,11 +82,11 @@ export default function DetailPage() {
   if (!selectedProduct) return <p>Chargement...</p>;
 
   const handleDelete = () => {
-    const confirmed = confirm("🗑 Supprimer ce produit ? (simulation)");
+    const confirmed = confirm("Supprimer ce produit ? ");
     if (!confirmed) return;
     const updatedList = products.filter((p) => p.id !== selectedProduct.id);
     setProducts(updatedList);
-    alert("🗑 Produit supprimé (simulation)");
+    alert("🗑 Produit supprimé ");
   };
 
   const handleUpdate = (updated: any) => {
@@ -94,7 +94,7 @@ export default function DetailPage() {
       p.id === updated.id ? updated : p
     );
     setProducts(updatedList);
-    fetchProductDetails(updated.id); // pour actualiser la fiche
+    fetchProductDetails(updated.id);
   };
 
   return (
