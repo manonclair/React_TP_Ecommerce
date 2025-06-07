@@ -1,12 +1,14 @@
+// app/root.tsx
 import {
-  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "react-router";
+  isRouteErrorResponse,
+} from "react-router-dom"; // ou "react-router-dom" si ce n’est pas Remix
 
+import { ProductProvider } from "./contexts/product/ProductProvider";
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -42,7 +44,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <ProductProvider>
+      <Outlet />
+    </ProductProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

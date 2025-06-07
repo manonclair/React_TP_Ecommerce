@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import { PokemonProvider } from "../../contexts/pokemon/PokemonProvider";
-import { PokemonContext } from "../../contexts/pokemon/PokemonContext";
+import { PokemonProvider } from "../../contexts/product/ProductProvider";
+import { PokemonContext } from "../../contexts/product/ProductContext";
 
 function DetailPageContent() {
   const { pokemonName } = useParams();

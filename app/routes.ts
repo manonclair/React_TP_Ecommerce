@@ -5,4 +5,7 @@ export default [
 
   route("pokemon", "pages/pokemon/ListPage.tsx"),
   route("pokemon/:pokemonName", "pages/pokemon/DetailPage.tsx"),
+
+  // 👇 Ajoute cette ligne
+  route("products", "pages/product/ListPage.tsx"),
 ] satisfies RouteConfig;

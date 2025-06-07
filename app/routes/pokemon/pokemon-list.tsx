@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
-import { PokemonProvider } from "../../contexts/pokemon/PokemonProvider";
-import { PokemonContext } from "../../contexts/pokemon/PokemonContext";
+import { PokemonProvider } from "../../contexts/product/ProductProvider";
+import { PokemonContext } from "../../contexts/product/ProductContext";
 import { NavLink } from "react-router-dom";
 import "../../app.css";
 
