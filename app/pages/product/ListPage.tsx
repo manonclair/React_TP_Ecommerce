@@ -1,20 +1,24 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../../contexts/product/ProductContext";
-import "./ListPage.css"; // 👈 ajoute ceci
+import { Link } from "react-router-dom";
 
 export default function ListPage() {
-  const { products, fetchProducts } = useContext(ProductContext);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+  const {
+    paginatedProducts,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    products,
+  } = useContext(ProductContext);
 
   return (
     <div className="page-container">
-      <h1 className="page-title">Produits</h1>
+      <h1 className="page-title">Produits ({products.length})</h1>
+
       <div className="product-grid">
-        {products.map((product) => (
-          <div key={product.id} className="product-card">
+        {paginatedProducts.map((product) => (
+          <Link to={`/product/${product.id}`} className="product-card">
+
             <div className="product-image-wrapper">
               <img
                 src={product.image}
@@ -25,8 +29,26 @@ export default function ListPage() {
             <h2 className="product-title">{product.title}</h2>
             <p className="product-category">{product.category}</p>
             <p className="product-price">{product.price} €</p>
-          </div>
+          </Link>
         ))}
+      </div>
+
+      <div className="pagination">
+        <button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          ◀ Précédent
+        </button>
+        <span>
+          Page {currentPage} / {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Suivant ▶
+        </button>
       </div>
     </div>
   );

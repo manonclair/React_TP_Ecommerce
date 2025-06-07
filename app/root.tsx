@@ -9,6 +9,8 @@ import {
 } from "react-router-dom"; // ou "react-router-dom" si ce n’est pas Remix
 
 import { ProductProvider } from "./contexts/product/ProductProvider";
+import { CartProvider } from "./contexts/cart/CartProvider";
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -44,13 +46,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  console.log("👀 App() exécuté !");
   return (
     <ProductProvider>
-      <Outlet />
+      <CartProvider>
+        <div style={{ padding: "1rem", color: "green" }}>
+          App loaded
+        </div>
+        <Outlet />
+      </CartProvider>
     </ProductProvider>
   );
 }
-
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";

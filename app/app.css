@@ -93,3 +93,41 @@ h1 {
   color: #000;
 }
 
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.page-btn {
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.page-btn:hover {
+  background-color: #d1d5db;
+}
+
+.page-btn.active {
+  background-color: #ea580c;
+  color: white;
+}
+.product-detail {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.product-detail-image {
+  width: 300px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}

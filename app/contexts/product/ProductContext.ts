@@ -22,12 +22,22 @@ type ProductContextType = {
   selectedProduct: ProductDetails | null;
   fetchProducts: () => Promise<void>;
   fetchProductDetails: (id: number) => Promise<void>;
+
+  paginatedProducts: Product[]; // 👈 à afficher dans ListPage
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  totalPages: number;
 };
+
+
 
 export const ProductContext = createContext<ProductContextType>({
   products: [],
   selectedProduct: null,
   fetchProducts: async () => {},
   fetchProductDetails: async () => {},
+  paginatedProducts: [],
+  currentPage: 1,
+  setCurrentPage: () => {},
+  totalPages: 1,
 });
-console.log("✅ ProductContext créé");

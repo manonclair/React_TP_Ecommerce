@@ -1,16 +1,27 @@
-// app/contexts/product/ProductProvider.tsx
 import {
   useState,
   useCallback,
   useMemo,
+  useEffect,
   type ReactNode,
 } from "react";
 import { ProductContext } from "./ProductContext";
 import type { Product, ProductDetails } from "./ProductContext";
 
+console.log("✅ ProductProvider : le fichier est chargé");
+
 export function ProductProvider({ children }: { children: ReactNode }) {
+  console.log("🟢 ProductProvider : composant monté");
+
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<ProductDetails | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+
+const totalPages = Math.ceil(products.length / itemsPerPage);
+
+
 
   const fetchProducts = useCallback(async () => {
     try {
@@ -32,15 +43,42 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const contextValue = useMemo(
-    () => ({
-      products,
-      selectedProduct,
-      fetchProducts,
-      fetchProductDetails,
-    }),
-    [products, selectedProduct, fetchProducts, fetchProductDetails]
-  );
+  useEffect(() => {
+    console.log("🔄 useEffect dans ProductProvider exécuté");
+    if (products.length === 0) {
+      console.log("⏳ Chargement des produits depuis le useEffect");
+      fetchProducts();
+    }
+  }, [fetchProducts]);
+
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return products.slice(start, start + itemsPerPage);
+  }, [products, currentPage]);
+
+const contextValue = useMemo(
+  () => ({
+    products,
+    selectedProduct,
+    fetchProducts,
+    fetchProductDetails,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    paginatedProducts,
+  }),
+  [
+    products,
+    selectedProduct,
+    fetchProducts,
+    fetchProductDetails,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    paginatedProducts,
+  ]
+);
+
 
   return (
     <ProductContext.Provider value={contextValue}>
@@ -48,4 +86,3 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     </ProductContext.Provider>
   );
 }
-console.log("✅ ProductProvider chargé correctement");

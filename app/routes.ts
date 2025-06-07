@@ -8,4 +8,7 @@ export default [
 
   // 👇 Ajoute cette ligne
   route("products", "pages/product/ListPage.tsx"),
+  route("product/:productId", "pages/product/DetailPage.tsx")
+
+
 ] satisfies RouteConfig;
