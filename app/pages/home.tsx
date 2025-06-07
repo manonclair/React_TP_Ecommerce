@@ -7,7 +7,7 @@ export default function HomePage() {
       <h1>Bienvenue !</h1>
       
 
-      <Link to="/pokemon">faire du shoping </Link>
+      <Link to="/products">faire du shoping </Link>
     </main>
   );
 }
