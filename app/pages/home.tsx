@@ -7,7 +7,7 @@ export default function HomePage() {
       <h1>Bienvenue !</h1>
       
 
-      <Link to="/products">faire du shoping </Link>
+      <div className='btnAcceuil'><Link to="/products">faire du shoping </Link></div>
     </main>
   );
 }

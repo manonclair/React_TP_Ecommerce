@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 
 export default function LoginPage() {
@@ -23,6 +23,7 @@ export default function LoginPage() {
   return (
     <main className="page-container">
       <h1 className="page-title">Connexion</h1>
+       
       <form className="login-form" onSubmit={handleSubmit}>
         {error && <p className="form-error">{error}</p>}
         <label>
@@ -44,7 +45,10 @@ export default function LoginPage() {
           />
         </label>
         <button type="submit">Se connecter</button>
+
       </form>
+    <div className='btnAcceuil'><Link to="/login">connexion admin </Link></div>
     </main>
+    
   );
 }
