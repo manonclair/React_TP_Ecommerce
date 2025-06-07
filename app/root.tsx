@@ -1,4 +1,3 @@
-// app/root.tsx
 import {
   Links,
   Meta,
@@ -6,10 +5,11 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
-} from "react-router-dom"; // ou "react-router-dom" si ce n’est pas Remix
+} from "react-router-dom";
 
 import { ProductProvider } from "./contexts/product/ProductProvider";
 import { CartProvider } from "./contexts/cart/CartProvider";
+import Navbar from "./components/Navbar"; 
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -45,19 +45,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { AuthProvider } from "./contexts/auth/AuthProvider";
+
 export default function App() {
-  console.log("👀 App() exécuté !");
   return (
-    <ProductProvider>
-      <CartProvider>
-        <div style={{ padding: "1rem", color: "green" }}>
-          App loaded
-        </div>
-        <Outlet />
-      </CartProvider>
-    </ProductProvider>
+    <AuthProvider>
+      <ProductProvider>
+        <CartProvider>
+          <Navbar />
+          <Outlet />
+        </CartProvider>
+      </ProductProvider>
+    </AuthProvider>
   );
 }
+
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";

@@ -27,9 +27,9 @@ type ProductContextType = {
   currentPage: number;
   setCurrentPage: (page: number) => void;
   totalPages: number;
+
+  setProducts: (products: Product[]) => void; // ✅ AJOUT ICI
 };
-
-
 
 export const ProductContext = createContext<ProductContextType>({
   products: [],
@@ -40,4 +40,5 @@ export const ProductContext = createContext<ProductContextType>({
   currentPage: 1,
   setCurrentPage: () => {},
   totalPages: 1,
+  setProducts: () => {}, 
 });

@@ -66,6 +66,7 @@ const contextValue = useMemo(
     setCurrentPage,
     totalPages,
     paginatedProducts,
+    setProducts, 
   }),
   [
     products,
@@ -76,6 +77,7 @@ const contextValue = useMemo(
     setCurrentPage,
     totalPages,
     paginatedProducts,
+    setProducts, 
   ]
 );
 
